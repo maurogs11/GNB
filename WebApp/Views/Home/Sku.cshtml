@@ -1,0 +1,33 @@
+﻿@model WebApp.Models.TransactionsSkuViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row" id="JsonTransactionsSkuRowId">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            @if (!string.IsNullOrEmpty(Model.JsonTransactionsSku))
+            { 
+                <pre class="lead">
+                    @Html.Raw(Newtonsoft.Json.Linq.JValue.Parse(Model.JsonTransactionsSku).ToString(Newtonsoft.Json.Formatting.Indented))
+                </pre>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row" id="TransactionsSkuReturnHomeButtonRowId">
+    <div class="col-md-12">
+        <p><a style="width: 20%" id="TransactionsSkuReturnHomeButtonId" class="btn btn-primary btn-lg">Volver</a></p>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $('#TransactionsSkuReturnHomeButtonId').click(function () {
+        document.location = '@Url.Action("Index", "Home")';
+    });
+    </script>
+}

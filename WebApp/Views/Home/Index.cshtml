@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <p class="lead">Get All Transactions</p>
+            <p><a style="width: 20%" id="AllTransactionsButton" class="btn btn-primary btn-lg">Go</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <p class="lead">Get All Rates</p>
+            <p><a style="width: 20%" id="AllRatesButton" class="btn btn-primary btn-lg">Go</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-6"><p class="lead">Get All Transactions for SKU</p></div>
+                <div class="col-md-6"><input id="SkuTextId" type="text" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p><a style="width: 20%" id="AllTransactionsForSkuButton" class="btn btn-primary btn-lg">Go</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+    $('#AllTransactionsForSkuButton').click(function () {
+        var sku = $('#SkuTextId').val();
+        document.location.href = 'Home/Sku?sku=' + sku;
+    });
+
+    $('#AllTransactionsButton').click(function () {
+        document.location = '@Url.Action("Transactions", "Home")';
+    });
+
+    $('#AllRatesButton').click(function () {
+        document.location = '@Url.Action("Rates", "Home")';
+    });
+    </script>
+}
